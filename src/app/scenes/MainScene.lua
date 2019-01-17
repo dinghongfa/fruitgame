@@ -67,6 +67,7 @@ function MainScene:ctor()
     local stencil = display.newSprite("images/wechat.png")
     local btncil =display.newSprite("#startBtn_N.png")
     local light = display.newSprite("images/light.png")
+    local light1= display.newSprite("images/light.png")
     local clip = cc.ClippingNode:create(stencil)
     local btnclip = cc.ClippingNode:create(btncil)
     clip:setAlphaThreshold(0.08)
@@ -74,13 +75,14 @@ function MainScene:ctor()
     clip:addTo(lightNode)
 
     btnclip:setAlphaThreshold(0.08)
-    btnclip:addChild(light)
+    btnclip:addChild(light1)
     btnclip:addTo(playNode)
 
     --在NODE上的移动动画显示
     local size = stencil:getContentSize()
     local size1 = btncil:getContentSize()
     local sizeLight = light:getContentSize()
+    local sizeLight1 = light:getContentSize()
     light:pos(-size.width / 2 - sizeLight.width, 0)
     light:runAction(cc.RepeatForever:create(
         cc.Sequence:create(
@@ -90,11 +92,11 @@ function MainScene:ctor()
         )
     ))
 
-    light:pos(-size1.width / 2 - sizeLight.width, 0)
-    light:runAction(cc.RepeatForever:create(
+    light1:pos(-size1.width / 2 - sizeLight1.width, 0)
+    light1:runAction(cc.RepeatForever:create(
         cc.Sequence:create(
-            cc.MoveTo:create(1.5, cc.p(size1.width / 2 + sizeLight.width, 0)),
-            cc.Place:create(cc.p(-size1.width / 2 - sizeLight.width, 0)),
+            cc.MoveTo:create(1.5, cc.p(size1.width / 2 + sizeLight1.width, 0)),
+            cc.Place:create(cc.p(-size1.width / 2 - sizeLight1.width, 0)),
             cc.DelayTime:create(1)
         )
     ))
